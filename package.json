@@ -1,0 +1,23 @@
+{
+  "name": "groentetuin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DetlefDmann/Detlef_Dumpelmann-level30Eindopdracht-TDD-Groentetuin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DetlefDmann/Detlef_Dumpelmann-level30Eindopdracht-TDD-Groentetuin/issues"
+  },
+  "homepage": "https://github.com/DetlefDmann/Detlef_Dumpelmann-level30Eindopdracht-TDD-Groentetuin#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}

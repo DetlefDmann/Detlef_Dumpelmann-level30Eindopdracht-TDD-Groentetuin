@@ -1,6 +1,7 @@
 //const { expect } = require("@jest/globals");
 //const { describe } = require("yargs");
-const { getYieldForPlant, getYieldForCrop, getTotalYield, getCostsForCrop, getRevenueForCrop } = require("./farm");
+const { expect } = require("@jest/globals");
+const { getYieldForPlant, getYieldForCrop, getTotalYield, getCostsForCrop, getRevenueForCrop, getProfitForCrop } = require("./farm");
 
  describe("getYieldForPlant", () => {
     const corn = {
@@ -80,7 +81,7 @@ describe("getCostsForCrop", () => {
 });
 
 describe("getRevenueForCrop", () => {
-    test("Calculate revenue for five tomato crops", () => {
+    test("Calculate revenue for ten tomato crops", () => {
         const tomato = {
             name: "tomato",
             salePrice: 3,
@@ -92,11 +93,48 @@ describe("getRevenueForCrop", () => {
         };
         expect(getRevenueForCrop(input)).toBe(120);
     });
+    test("Calculate revenue for zero tomato crops", () => {
+        const tomato = {
+            name: "tomato",
+            salePrice: 3,
+            yield: 4
+        };
+        const input = { 
+            crop: tomato,
+            numCrops: 0,
+        };
+        expect(getRevenueForCrop(input)).toBe(0);
+    });
 });
 
-// describe("getProfitForCrop", () => {
-//     test("", () => {});
-// });
+describe("getProfitForCrop", () => {
+    test("Calculate profit for ten tomato crops", () => {
+        const tomato = {
+            name: "tomato",
+            salePrice: 3,
+            yield: 4,
+            cost:2
+        };
+        const input = { 
+            crop: tomato,
+            numCrops: 10,
+        };
+        expect(getProfitForCrop(input)).toBe(100)
+    });
+    test("Calculate profit for zero tomato crops", () => {
+        const tomato = {
+            name: "tomato",
+            salePrice: 3,
+            yield: 4,
+            cost:2
+        };
+        const input = { 
+            crop: tomato,
+            numCrops: 0,
+        };
+        expect(getProfitForCrop(input)).toBe(0)
+    });
+});
 
 // describe("getTotalProfit", () => {
 //     test("", () => {});

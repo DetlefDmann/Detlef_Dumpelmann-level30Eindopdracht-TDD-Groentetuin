@@ -1,6 +1,6 @@
 //const { expect } = require("@jest/globals");
 //const { describe } = require("yargs");
-const { getYieldForPlant, getYieldForCrop, getTotalYield, getCostsForCrop } = require("./farm");
+const { getYieldForPlant, getYieldForCrop, getTotalYield, getCostsForCrop, getRevenueForCrop } = require("./farm");
 
  describe("getYieldForPlant", () => {
     const corn = {
@@ -79,10 +79,25 @@ describe("getCostsForCrop", () => {
     });
 });
 
-// describe("", () => {
+describe("getRevenueForCrop", () => {
+    test("Calculate revenue for five tomato crops", () => {
+        const tomato = {
+            name: "tomato",
+            salePrice: 3,
+            yield: 4
+        };
+        const input = { 
+            crop: tomato,
+            numCrops: 10,
+        };
+        expect(getRevenueForCrop(input)).toBe(120);
+    });
+});
+
+// describe("getProfitForCrop", () => {
 //     test("", () => {});
 // });
 
-// describe("", () => {
+// describe("getTotalProfit", () => {
 //     test("", () => {});
 // });

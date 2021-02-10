@@ -1,6 +1,8 @@
-const { getYieldForPlant, getYieldForCrop, getTotalYield } = require("./farm");
+//const { expect } = require("@jest/globals");
+//const { describe } = require("yargs");
+const { getYieldForPlant, getYieldForCrop, getTotalYield, getCostsForCrop } = require("./farm");
 
-describe("getYieldForPlant", () => {
+ describe("getYieldForPlant", () => {
     const corn = {
         name: "corn",
         yield: 30,
@@ -11,7 +13,7 @@ describe("getYieldForPlant", () => {
     });
 });
 
-describe("getYieldForCrop", () => {
+ describe("getYieldForCrop", () => {
     test("Get yield for crop, simple", () => {
         const corn = {
             name: "corn",
@@ -25,7 +27,7 @@ describe("getYieldForCrop", () => {
     });
 });
 
-describe("getTotalYield", () => {
+ describe("getTotalYield", () => {
     test("Calculate total yield with multiple crops", () => {
         const corn = {
             name: "corn",
@@ -51,3 +53,36 @@ describe("getTotalYield", () => {
         expect(getTotalYield({ crops })).toBe(0);
     });
 });
+
+describe("getCostsForCrop", () => {
+    test("Calculate cost for ten corn crops", () => {
+        const corn = {
+            name: "corn",
+            cost: 1,
+        };
+        const input = { 
+            crop: corn,
+            numCrops: 10,
+        };
+        expect(getCostsForCrop(input)).toBe(10);
+    });
+    test("Calculate cost for ten tomato crops", () => {
+        const tomato = {
+            name: "tomato",
+            cost: 2,
+        };
+        const input = { 
+            crop: tomato,
+            numCrops: 10,
+        };
+        expect(getCostsForCrop(input)).toBe(20);
+    });
+});
+
+// describe("", () => {
+//     test("", () => {});
+// });
+
+// describe("", () => {
+//     test("", () => {});
+// });

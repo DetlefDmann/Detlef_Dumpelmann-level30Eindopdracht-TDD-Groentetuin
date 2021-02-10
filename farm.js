@@ -35,7 +35,9 @@ const getProfitForCrop = (input) => {
 
 //
 const getTotalProfit = ({crops}) => {
-    return "Hello";
+    return crops.map(crop => getProfitForCrop(crop)).reduce((total,current) => {
+        return total + current ;
+    });
 }
  
  module.exports = {

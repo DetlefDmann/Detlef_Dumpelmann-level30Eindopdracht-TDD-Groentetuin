@@ -25,7 +25,7 @@ const getCostsForCrop = (input) => {
 }  
 //takes an object with crop and numCrops
 const getRevenueForCrop = (input) => {
-    return input.numCrops*input.crop.yield*input.crop.salePrice
+    return getYieldForCrop(input)*input.crop.salePrice ;
 }
  
  module.exports = {

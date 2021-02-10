@@ -33,7 +33,7 @@ const getProfitForCrop = (input) => {
     return getRevenueForCrop(input) - getCostsForCrop(input);
 }
 
-//
+//takes an array of objects with crop and numCrops
 const getTotalProfit = ({crops}) => {
     return crops.map(crop => getProfitForCrop(crop)).reduce((total,current) => {
         return total + current ;

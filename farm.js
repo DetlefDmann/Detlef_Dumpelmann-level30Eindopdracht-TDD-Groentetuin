@@ -1,5 +1,5 @@
 
-//takes an object with name and yield
+//takes an object with name and yield and environment factors
 const getYieldForPlant = (plant, environmentFactors={}) => {
     let totalFactor = 1;
     if (environmentFactors.hasOwnProperty("sun")) {
@@ -20,7 +20,7 @@ const getYieldForPlant = (plant, environmentFactors={}) => {
     return plant.yield*totalFactor ;
 };
 
- //takes an object with crop and numCrops
+ //takes an object with crop and numCrops and environment factors
 const getYieldForCrop = (input, environmentFactors) => {
     return input.numCrops*getYieldForPlant(input.crop, environmentFactors);
 };

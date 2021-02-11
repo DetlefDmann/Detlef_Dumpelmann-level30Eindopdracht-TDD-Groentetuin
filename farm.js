@@ -1,7 +1,23 @@
 
 //takes an object with name and yield
-const getYieldForPlant = (plant) => {
-    return plant.yield ;
+const getYieldForPlant = (plant, environmentFactors={}) => {
+    let totalFactor = 1;
+    if (environmentFactors.hasOwnProperty("sun")) {
+        if (plant.factors.hasOwnProperty("sun")) {
+            totalFactor *= (plant.factors.sun[environmentFactors.sun] + 100)/100;
+        };
+    }
+    if (environmentFactors.hasOwnProperty("wind")) {
+        if (plant.factors.hasOwnProperty("wind")){
+            totalFactor *= (plant.factors.wind[environmentFactors.wind] + 100)/100;
+        };
+    }
+    if (environmentFactors.hasOwnProperty("soil")) {
+        if (plant.factors.hasOwnProperty("soil")){
+            totalFactor *= (plant.factors.soil[environmentFactors.soil] + 100)/100;
+        };
+    }
+    return plant.yield*totalFactor ;
 };
 
  //takes an object with crop and numCrops

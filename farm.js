@@ -21,8 +21,8 @@ const getYieldForPlant = (plant, environmentFactors={}) => {
 };
 
  //takes an object with crop and numCrops
-const getYieldForCrop = (input) => {
-    return input.numCrops*getYieldForPlant(input.crop);
+const getYieldForCrop = (input, environmentFactors) => {
+    return input.numCrops*getYieldForPlant(input.crop, environmentFactors);
 };
  
 

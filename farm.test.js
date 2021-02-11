@@ -182,6 +182,7 @@ describe("getTotalProfit", () => {
 });
 
 //code for steps six and beyond.
+// getYieldForPlant with environment factors
 describe("getYieldForPlant with environment factor sun", () => {
     const corn = {
         name: "corn",
@@ -258,36 +259,38 @@ describe("getYieldForPlant with environment factor soil", () => {
     });
 });
 
-//  describe("getYieldForCrop with environment factor sun", () => {
-//     const corn = {
-//         name: "corn",
-//         yield: 30,
-//         factors: {
-//           sun: {
-//             low: -50,
-//             medium: 0,
-//             high: 50,
-//           },
-//         },
-//       };
-//     test("Get yield for crop, sun low", () => {
-//         const environmentFactors = {
-//             sun: "low",
-//         };
-//         const input = {
-//             crop: corn,
-//             numCrops: 10,
-//         };
-//         expect(getYieldForCrop(input,environmentFactors)).toBe(150);
-//     });
-//     test("Get yield for crop, sun high", () => {
-//         const environmentFactors = {
-//             sun: "high",
-//         };
-//         const input = {
-//             crop: corn,
-//             numCrops: 10,
-//         };
-//         expect(getYieldForCrop(input, environmentFactors)).toBe(450);
-//     });
-// });
+// getYieldForCrop with environment factors
+
+ describe("getYieldForCrop with environment factor sun", () => {
+    const corn = {
+        name: "corn",
+        yield: 30,
+        factors: {
+          sun: {
+            low: -50,
+            medium: 0,
+            high: 50,
+          },
+        },
+      };
+    test("Get yield for crop, sun low", () => {
+        const environmentFactors = {
+            sun: "low",
+        };
+        const input = {
+            crop: corn,
+            numCrops: 10,
+        };
+        expect(getYieldForCrop(input,environmentFactors)).toBe(150);
+    });
+    test("Get yield for crop, sun high", () => {
+        const environmentFactors = {
+            sun: "high",
+        };
+        const input = {
+            crop: corn,
+            numCrops: 10,
+        };
+        expect(getYieldForCrop(input, environmentFactors)).toBe(450);
+    });
+});

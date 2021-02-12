@@ -415,3 +415,114 @@ describe("getProfitForCrop with multiple environment factors", () => {
         expect(getProfitForCrop(input, environmentFactors)).toBe(4010);
     });
 });
+
+// get total Profit with environment factors
+
+describe("getTotalProfit with environment factors", () => {
+    test("Calculate the total profit for two different crops with env. factors", () => {
+        const corn = {
+            name: "corn",
+            yield: 30,
+            salePrice: 6,
+            cost: 2,
+            factors: {
+              sun: {
+                low: -50,
+                medium: 0,
+                high: 50,
+              },
+              soil: {
+                  low: -50,
+                  medium: 0,
+                  high: 50,
+              },
+              wind: {
+                  low: -50,
+                  medium: 0,
+                  high: 50,
+              }
+            },
+          };
+        const pumpkin = {
+            name: "pumpkin",
+            salePrice: 10,
+            yield: 4,
+            cost:3,
+            factors: {
+                sun: {
+                  low: -50,
+                  medium: 0,
+                  high: 50,
+                },
+                wind: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                }
+            },
+        };
+        const crops = [
+            { crop: corn, numCrops: 10 },
+            { crop: pumpkin, numCrops: 2 },
+        ];
+        const environmentFactors = {
+            sun: "high",
+            soil: "high",
+            wind: "low"
+        };
+        expect(getTotalProfit({crops}, environmentFactors)).toBe(2059);
+    });
+    test("Calculate the total profit for crops with other env factors", () => {
+        const corn = {
+            name: "corn",
+            salePrice: 2,
+            yield: 3,
+            cost: 1,
+            factors: {
+                sun: {
+                  low: -50,
+                  medium: 0,
+                  high: 50,
+                },
+                soil: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                },
+                wind: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                }
+              },
+        };
+        const pumpkin = {
+            name: "pumpkin",
+            salePrice: 10,
+            yield: 4,
+            cost:3,
+            factors: {
+                sun: {
+                  low: -50,
+                  medium: 0,
+                  high: 50,
+                },
+                wind: {
+                    low: -50,
+                    medium: 0,
+                    high: 50,
+                }
+            },
+        };
+        const crops = [
+            { crop: corn, numCrops: 20 },
+            { crop: pumpkin, numCrops: 10 },
+        ];
+        const environmentFactors = {
+            sun: "medium",
+            soil: "medium",
+            wind: "medium"
+        };
+        expect(getTotalProfit({crops},environmentFactors)).toBe(470);
+    });
+});

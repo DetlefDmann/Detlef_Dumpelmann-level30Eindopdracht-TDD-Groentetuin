@@ -40,13 +40,13 @@ const getCostsForCrop = (input) => {
     return input.numCrops*getCostForPlant(input.crop) ;
 }  
 //takes an object with crop and numCrops
-const getRevenueForCrop = (input) => {
-    return getYieldForCrop(input)*input.crop.salePrice ;
+const getRevenueForCrop = (input, environmentFactors) => {
+    return getYieldForCrop(input, environmentFactors)*input.crop.salePrice ;
 }
 
 //takes an object with crop and numCrops
-const getProfitForCrop = (input) => {
-    return getRevenueForCrop(input) - getCostsForCrop(input);
+const getProfitForCrop = (input, environmentFactors) => {
+    return getRevenueForCrop(input, environmentFactors) - getCostsForCrop(input);
 }
 
 //takes an array of objects with crop and numCrops

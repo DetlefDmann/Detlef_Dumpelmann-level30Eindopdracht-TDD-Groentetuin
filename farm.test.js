@@ -353,3 +353,65 @@ describe("getYieldForPlant with environment factor soil", () => {
         expect(getYieldForCrop(input, environmentFactors)).toBe(675);
     });
 });
+
+//getProfitForCrops with environment factors
+
+describe("getProfitForCrop with multiple environment factors", () => {
+    const corn = {
+        name: "corn",
+        yield: 30,
+        salePrice: 6,
+        cost: 2,
+        factors: {
+          sun: {
+            low: -50,
+            medium: 0,
+            high: 50,
+          },
+          soil: {
+              low: -50,
+              medium: 0,
+              high: 50,
+          },
+          wind: {
+              low: -50,
+              medium: 0,
+              high: 50,
+          }
+        },
+      };
+    test("Get profit for crop, sun low soil high", () => {
+        const environmentFactors = {
+            sun: "low",
+            soil: "high",
+        };
+        const input = {
+            crop: corn,
+            numCrops: 10,
+        };
+        expect(getProfitForCrop(input,environmentFactors)).toBe(1330);
+    });
+    test("Get profit for crop, sun high soil low", () => {
+        const environmentFactors = {
+            sun: "high",
+            soil: "low"
+        };
+        const input = {
+            crop: corn,
+            numCrops: 10,
+        };
+        expect(getProfitForCrop(input, environmentFactors)).toBe(1330);
+    });
+    test("Get Profit for crop with sun high, soil high, wind low", () => {
+        const environmentFactors = {
+            sun: "high",
+            soil: "high",
+            wind: "low"
+        };
+        const input = {
+            crop: corn,
+            numCrops: 20,
+        };
+        expect(getProfitForCrop(input, environmentFactors)).toBe(4010);
+    });
+});

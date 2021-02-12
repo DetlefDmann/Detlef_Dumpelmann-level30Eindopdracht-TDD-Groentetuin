@@ -27,7 +27,7 @@ const getYieldForCrop = (input, environmentFactors) => {
  
 
  //takes an array of objects with crop and numCrops
-const getTotalYield = ({crops}) => crops.map(crop => getYieldForCrop(crop)).reduce((total, input) => {
+const getTotalYield = ({crops},environmentFactors) => crops.map(crop => getYieldForCrop(crop,environmentFactors)).reduce((total, input) => {
     return total + input
 });
 
@@ -50,8 +50,8 @@ const getProfitForCrop = (input, environmentFactors) => {
 }
 
 //takes an array of objects with crop and numCrops
-const getTotalProfit = ({crops}) => {
-    return crops.map(crop => getProfitForCrop(crop)).reduce((total,current) => {
+const getTotalProfit = ({crops},environmentFactors) => {
+    return crops.map(crop => getProfitForCrop(crop,environmentFactors)).reduce((total,current) => {
         return total + current ;
     });
 }
